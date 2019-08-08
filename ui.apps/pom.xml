@@ -7,7 +7,7 @@
     <!-- ====================================================================== -->
     <parent>
         <groupId>be.ida-mediafoundry.jetpack</groupId>
-        <artifactId>tool-name</artifactId>
+        <artifactId>component-insight</artifactId>
         <version>1.0.0</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
@@ -15,11 +15,11 @@
     <!-- ====================================================================== -->
     <!-- P R O J E C T  D E S C R I P T I O N                                   -->
     <!-- ====================================================================== -->
-    <artifactId>tool-name.ui.apps</artifactId>
+    <artifactId>component-insight.ui.apps</artifactId>
     <packaging>content-package</packaging>
-    <name>Jetpack - Tool Name - UI apps</name>
+    <name>Jetpack - Component Insight - UI apps</name>
     <description>
-        Tool description
+        Provides visual insight in the usage, relations and inheritance structure of the deployed components.
     </description>
 
     <!-- ====================================================================== -->
@@ -80,7 +80,7 @@
                     <filterSource>src/main/content/META-INF/vault/filter.xml</filterSource>
                     <verbose>true</verbose>
                     <failOnError>true</failOnError>
-                    <name>Jetpack-Tool-Name</name>
+                    <name>Jetpack-Component-insight</name>
                     <group>Jetpack</group>
                     <properties>
                         <acHandling>merge_preserve</acHandling>
@@ -88,8 +88,8 @@
                     <embeddeds>
                         <embedded>
                             <groupId>be.ida-mediafoundry.jetpack</groupId>
-                            <artifactId>tool-name.core</artifactId>
-                            <target>/apps/jetpack/toolname/install</target>
+                            <artifactId>component-insight.core</artifactId>
+                            <target>/apps/jetpack/componentinsight/install</target>
                         </embedded>
                     </embeddeds>
                 </configuration>
@@ -108,7 +108,7 @@
     <dependencies>
         <dependency>
             <groupId>be.ida-mediafoundry.jetpack</groupId>
-            <artifactId>tool-name.core</artifactId>
+            <artifactId>component-insight.core</artifactId>
             <version>${project.version}</version>
         </dependency>
 

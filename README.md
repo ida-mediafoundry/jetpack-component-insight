@@ -1,17 +1,11 @@
-[![Build Status](https://travis-ci.org/ida-mediafoundry/jetpack-tool-name.svg?branch=master)](https://travis-ci.org/ida-mediafoundry/jetpack-tool-name)
+[![Build Status](https://travis-ci.org/ida-mediafoundry/jetpack-component-insight.svg?branch=master)](https://travis-ci.org/ida-mediafoundry/jetpack-component-insight)
 
-After using this template to create a new tool repository,
-replace all occurences of the following strings with the new tool name
-
-- Tool Name ( 9 occurences ) 
-- tool-name ( 14 occurences)
-- toolname ( 8 occurences )
-
-
-# Jetpack - Tool Name
+# Jetpack - Component Insight
 (powered by iDA Mediafoundry)
 
 ## Description
+
+Provide the authors and developers a visual interface see the usage, relations and or inhertiance structure of the deployed components on their AEM instance.
 
 # Pre-requisites
 

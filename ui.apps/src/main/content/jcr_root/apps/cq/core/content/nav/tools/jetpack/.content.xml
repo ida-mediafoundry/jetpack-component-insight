@@ -3,12 +3,12 @@
         xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
         jcr:primaryType="nt:unstructured"
         jcr:title="Jetpack (by iDA)">
-    <toolname
+    <componentinsight
     jcr:primaryType="nt:unstructured"
-    jcr:title="Tool Name"
-    jcr:description="Manage Tool Name"
-    href="/jetpack/tool-name.html"
-    consoleId="jetpack-tool-name"
-    icon="shuffle"
+    jcr:title="Component Insight"
+    jcr:description="Manage Component Insight"
+    href="/jetpack/component-insight.html"
+    consoleId="jetpack-component-insight"
+    icon="trendInspect"
     order="{Long}200"/>
 </jcr:root>
