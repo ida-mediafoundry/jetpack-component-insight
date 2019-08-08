@@ -6,7 +6,7 @@
     <!-- P A R E N T  P R O J E C T  D E S C R I P T I O N                      -->
     <!-- ====================================================================== -->
     <parent>
-        <groupId>be.ida-mediafoundry.jetpack</groupId>
+        <groupId>be.ida_mediafoundry.jetpack</groupId>
         <artifactId>component-insight</artifactId>
         <version>1.0.0</version>
         <relativePath>../pom.xml</relativePath>
@@ -87,7 +87,7 @@
                     </properties>
                     <embeddeds>
                         <embedded>
-                            <groupId>be.ida-mediafoundry.jetpack</groupId>
+                            <groupId>be.ida_mediafoundry.jetpack</groupId>
                             <artifactId>component-insight.core</artifactId>
                             <target>/apps/jetpack/componentinsight/install</target>
                         </embedded>
@@ -107,7 +107,7 @@
     <!-- ====================================================================== -->
     <dependencies>
         <dependency>
-            <groupId>be.ida-mediafoundry.jetpack</groupId>
+            <groupId>be.ida_mediafoundry.jetpack</groupId>
             <artifactId>component-insight.core</artifactId>
             <version>${project.version}</version>
         </dependency>
