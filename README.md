@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/ida-mediafoundry/jetpack-component-insight.svg?branch=master)](https://travis-ci.org/ida-mediafoundry/jetpack-component-insight)
+[![Build Status](https://travis-ci.org/ida-mediafoundry/jetpack-component-insight.svg?branch=master)](https://travis-ci.org/ida-mediafoundry/jetpack-component-insight)[![codecov](https://codecov.io/gh/ida-mediafoundry/component-insight/branch/master/graph/badge.svg)](https://codecov.io/gh/ida-mediafoundry/component-insight)
 
 # Jetpack - Component Insight
 (powered by iDA Mediafoundry)
