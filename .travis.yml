@@ -1,14 +1,7 @@
-jdk:
-  - oraclejdk11
-
 language: java
 
-branches:
-  only:
-    - master
-    
-before_script:
-  - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+jdk:
+  - openjdk8
 
 script:
   - mvn clean install cobertura:cobertura
