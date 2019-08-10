@@ -1,0 +1,78 @@
+{
+  "jcr:primaryType": "sling:Folder",
+  "jetpack": {
+    "jcr:primaryType": "nt:folder",
+    "components": {
+      "jcr:primaryType": "nt:folder",
+      "general": {
+        "jcr:primaryType": "nt:folder",
+        "text-component": {
+          "jcr:primaryType": "cq:Component",
+          "sling:resourceType": "jetpack/components/general/text-component"
+        },
+        "image-component": {
+          "jcr:primaryType": "cq:Component",
+          "sling:resourceType": "jetpack/components/general/image-component"
+        }
+      },
+      "layout": {
+        "jcr:primaryType": "nt:folder",
+        "section-component": {
+          "jcr:primaryType": "cq:Component",
+          "sling:resourceType": "jetpack/components/layout/section-component"
+        },
+        "column-component": {
+          "jcr:primaryType": "cq:Component",
+          "sling:resourceType": "jetpack/components/layout/column-component"
+        }
+      },
+      "catalog": {
+        "jcr:primaryType": "nt:folder",
+        "product-component": {
+          "jcr:primaryType": "cq:Component",
+          "sling:resourceType": "jetpack/components/catalog/product-component"
+        }
+      },
+      "checkout": {
+        "jcr:primaryType": "nt:folder",
+        "basket-component": {
+          "jcr:primaryType": "cq:Component",
+          "sling:resourceType": "jetpack/components/checkout/basket-component"
+        },
+        "order-component": {
+          "jcr:primaryType": "cq:Component",
+          "sling:resourceType": "jetpack/components/checkout/order-component"
+        }
+      }
+    }
+  },
+  "adobe": {
+    "components": {
+      "jcr:primaryType": "nt:folder",
+      "general": {
+        "jcr:primaryType": "nt:folder",
+        "text-component": {
+          "jcr:primaryType": "cq:Component",
+          "sling:resourceType": "adobe/components/general/text-component"
+        },
+        "image-component": {
+          "jcr:primaryType": "cq:Component",
+          "sling:resourceType": "adobe/components/general/image-component"
+        }
+      },
+      "layout": {
+        "jcr:primaryType": "nt:folder",
+        "section-component": {
+          "jcr:primaryType": "cq:Component",
+          "sling:resourceType": "adobe/components/layout/section-component"
+        },
+        "column-component": {
+          "jcr:primaryType": "cq:Component",
+          "sling:resourceType": "adobe/components/layout/column-component"
+        }
+      }
+    }
+  }
+}
+
+
