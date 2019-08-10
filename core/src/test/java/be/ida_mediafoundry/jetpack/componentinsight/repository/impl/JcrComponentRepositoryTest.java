@@ -15,6 +15,7 @@ import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -42,21 +43,21 @@ public class JcrComponentRepositoryTest {
 
     @Test
     public void getAllComponentsTest() {
-        doReturn(getTestResources()).when(componentRepository).getAll();
+        doReturn(getTestResources()).when(componentRepository).getAllComponents();
         context.registerInjectActivateService(componentRepository);
 
         List<JcrComponent> components = componentRepository.getAll();
         assertThat(components).hasSize(11);
     }
 
-    private List<JcrComponent> getTestResources() {
-        List<JcrComponent> list = new ArrayList<>();
+    private List<Resource> getTestResources() {
+        List<Resource> list = new ArrayList<>();
 
         Resource appsJetpackResource = context.resourceResolver().getResource("/apps/jetpack/components");
-        appsJetpackResource.getChildren().forEach(childResource -> childResource.getChildren().forEach(r -> list.add(r.adaptTo(JcrComponent.class))));
+        appsJetpackResource.getChildren().forEach(childResource -> childResource.getChildren().forEach(list::add));
 
         Resource appsAdobeResource = context.resourceResolver().getResource("/apps/adobe/components");
-        appsAdobeResource.getChildren().forEach(childResource -> childResource.getChildren().forEach(r -> list.add(r.adaptTo(JcrComponent.class))));
+        appsAdobeResource.getChildren().forEach(childResource -> childResource.getChildren().forEach(list::add));
         return list;
     }
 
