@@ -1,46 +1,63 @@
 package be.ida_mediafoundry.jetpack.componentinsight.repository.impl;
 
 import be.ida_mediafoundry.jetpack.componentinsight.model.JcrComponent;
-import be.ida_mediafoundry.jetpack.componentinsight.repository.ComponentRepository;
 import io.wcm.testing.mock.aem.junit.AemContext;
 import org.apache.sling.api.resource.PersistenceException;
-import org.apache.sling.api.resource.ResourceResolver;
-import org.apache.sling.testing.mock.sling.ResourceResolverType;
+import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ResourceResolverFactory;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.doReturn;
 
 @RunWith(MockitoJUnitRunner.class)
 public class JcrComponentRepositoryTest {
 
     @Rule
-    public final AemContext context = new AemContext(ResourceResolverType.JCR_OAK);
-
-    @Mock
-    protected ResourceResolver resourceResolver;
+    public final AemContext context = new AemContext();
 
     @InjectMocks
-    protected ComponentRepository componentRepository = new JcrComponentRepository();
+    @Spy
+    private JcrComponentRepository componentRepository;
+
+    @Mock
+    private ResourceResolverFactory resourceResolverFactory;
 
     @Before
     public void setUp() throws PersistenceException {
         context.addModelsForPackage("be.ida_mediafoundry.jetpack");
+        context.addModelsForClasses(JcrComponent.class);
         context.load().json("/components.json", "/apps");
-        context.resourceResolver().commit();
     }
 
     @Test
     public void getAllComponentsTest() {
+        doReturn(getTestResources()).when(componentRepository).getAll();
+        context.registerInjectActivateService(componentRepository);
+
         List<JcrComponent> components = componentRepository.getAll();
         assertThat(components).hasSize(11);
+    }
+
+    private List<JcrComponent> getTestResources() {
+        List<JcrComponent> list = new ArrayList<>();
+
+        Resource appsJetpackResource = context.resourceResolver().getResource("/apps/jetpack/components");
+        appsJetpackResource.getChildren().forEach(childResource -> childResource.getChildren().forEach(r -> list.add(r.adaptTo(JcrComponent.class))));
+
+        Resource appsAdobeResource = context.resourceResolver().getResource("/apps/adobe/components");
+        appsAdobeResource.getChildren().forEach(childResource -> childResource.getChildren().forEach(r -> list.add(r.adaptTo(JcrComponent.class))));
+        return list;
     }
 
 }

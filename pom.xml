@@ -4,7 +4,7 @@
     <groupId>be.ida_mediafoundry.jetpack</groupId>
     <artifactId>component-insight</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.0</version>
+    <version>1.0.0-SNAPSHOT</version>
 
     <name>Jetpack - Component Insight</name>
     <description>Jetpack Component Insight.</description>
