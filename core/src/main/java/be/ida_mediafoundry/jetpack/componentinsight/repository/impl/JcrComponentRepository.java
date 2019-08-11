@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 @Component(
-        name = "Jetpack.JcrComponentRepository",
+        name = "jetpack.componentInsight.JCRComponentRepository",
         service = ComponentRepository.class)
 public class JcrComponentRepository implements ComponentRepository {
 
@@ -37,7 +37,7 @@ public class JcrComponentRepository implements ComponentRepository {
                                    .findResources(COMPONENT_QUERY, Query.JCR_SQL2)
                                    .forEachRemaining(resource -> components.add(resource.adaptTo(JcrComponent.class)));
         } catch (LoginException e) {
-            LOG.error("Could not retrieve list of component, Check if service user [" + DEFAULT_USER + "] is correctly installed", e);
+            LOG.error("Could not retrieve list of components, Check if service user [" + DEFAULT_USER + "] is correctly installed", e);
         }
         return components;
     }

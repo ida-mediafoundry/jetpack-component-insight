@@ -42,6 +42,7 @@ public class JcrComponentTest {
 
         // Expect all properties to be mapped and accessible
         assertThat(jcrComponent).isNotNull();
+        assertThat(jcrComponent.getPath()).isEqualTo("/apps/jetpack/components/general/text-component");
         assertThat(jcrComponent.getPrimaryType()).isEqualTo("cq:Component");
         assertThat(jcrComponent.getResourceType()).isEqualTo("jetpack/components/general/text-component");
         assertThat(jcrComponent.getResourceSuperType()).isEqualTo("adobe/components/general/text-component");

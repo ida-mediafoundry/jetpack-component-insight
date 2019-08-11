@@ -4,10 +4,18 @@ import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Optional;
+import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+
+import javax.annotation.PostConstruct;
 
 @Model(adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class JcrComponent {
+
+    @Self
+    private transient Resource resource;
+
+    private String path;
 
     @ValueMapValue(name = "jcr:primaryType")
     private String primaryType;
@@ -24,6 +32,15 @@ public class JcrComponent {
 
     @ValueMapValue(name = "sling:resourceSuperType")
     private String resourceSuperType;
+
+    @PostConstruct
+    public void setup(){
+        this.path = resource.getPath();
+    }
+
+    public String getPath() {
+        return path;
+    }
 
     public String getPrimaryType() {
         return primaryType;
@@ -44,4 +61,6 @@ public class JcrComponent {
     public String getResourceSuperType() {
         return resourceSuperType;
     }
+
+
 }
