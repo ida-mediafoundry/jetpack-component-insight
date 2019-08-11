@@ -2,38 +2,51 @@ package be.ida_mediafoundry.jetpack.componentinsight.repository.impl;
 
 import be.ida_mediafoundry.jetpack.componentinsight.model.JcrComponent;
 import be.ida_mediafoundry.jetpack.componentinsight.repository.ComponentRepository;
-import org.apache.commons.collections4.IteratorUtils;
-import org.apache.sling.api.resource.Resource;
-import org.apache.sling.api.resource.ResourceResolver;
+import org.apache.sling.api.resource.LoginException;
 import org.apache.sling.api.resource.ResourceResolverFactory;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.jcr.query.Query;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Component(
-        name = "Jetpack - Jcr Component Repository",
+        name = "Jetpack.JcrComponentRepository",
         service = ComponentRepository.class)
 public class JcrComponentRepository implements ComponentRepository {
 
-    @Reference
-    private ResourceResolverFactory resourceResolverFactory;
-
+    private static final Logger LOG = LoggerFactory.getLogger(JcrComponentRepository.class);
+    private static final String DEFAULT_USER = "jetpack-component-insight";
+    private static final String DEFAULT_SERVICE = "be.ida_mediafoundry.jetpack.component-insight.core";
     private static final String COMPONENT_QUERY = "SELECT * FROM [cq:Component] AS s WHERE ISDESCENDANTNODE([/apps]) and s.[jcr:primaryType] = 'cq:Component'";
 
-    List<Resource> getAllComponents() {
-        ResourceResolver resourceResolver = resourceResolverFactory.getThreadResourceResolver();
-        return IteratorUtils.toList(resourceResolver.findResources(COMPONENT_QUERY, Query.JCR_SQL2));
-    }
+    @Reference
+    protected ResourceResolverFactory resourceResolverFactory;
 
     @Override
     public List<JcrComponent> getAll() {
         List<JcrComponent> components = new ArrayList<>();
-        getAllComponents().forEach(resource -> components.add(resource.adaptTo(JcrComponent.class)));
+        try {
+            resourceResolverFactory.getServiceResourceResolver(getServiceUserCredentials())
+                                   .findResources(COMPONENT_QUERY, Query.JCR_SQL2)
+                                   .forEachRemaining(resource -> components.add(resource.adaptTo(JcrComponent.class)));
+        } catch (LoginException e) {
+            LOG.error("Could not retrieve list of component, Check if service user [" + DEFAULT_USER + "] is correctly installed", e);
+        }
         return components;
+    }
+
+    private Map<String, Object> getServiceUserCredentials() {
+        Map<String, Object> credentials = new HashMap<>();
+        credentials.put(ResourceResolverFactory.USER, DEFAULT_USER);
+        credentials.put(ResourceResolverFactory.SUBSERVICE, DEFAULT_SERVICE);
+        return credentials;
     }
 
 }

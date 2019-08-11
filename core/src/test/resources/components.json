@@ -8,7 +8,10 @@
         "jcr:primaryType": "nt:folder",
         "text-component": {
           "jcr:primaryType": "cq:Component",
-          "sling:resourceType": "jetpack/components/general/text-component"
+          "sling:resourceType": "jetpack/components/general/text-component",
+          "sling:resourceSuperType": "adobe/components/general/text-component",
+          "jcr:title": "Text Component",
+          "componentGroup": "Jetpack - General"
         },
         "image-component": {
           "jcr:primaryType": "cq:Component",

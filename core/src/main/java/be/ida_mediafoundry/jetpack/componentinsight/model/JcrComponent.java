@@ -25,5 +25,23 @@ public class JcrComponent {
     @ValueMapValue(name = "sling:resourceSuperType")
     private String resourceSuperType;
 
+    public String getPrimaryType() {
+        return primaryType;
+    }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public String getComponentGroup() {
+        return componentGroup;
+    }
+
+    public String getResourceType() {
+        return resourceType;
+    }
+
+    public String getResourceSuperType() {
+        return resourceSuperType;
+    }
 }
