@@ -1,7 +1,9 @@
 package be.ida_mediafoundry.jetpack.componentinsight.servlet;
 
 import be.ida_mediafoundry.jetpack.componentinsight.model.JcrComponent;
+import be.ida_mediafoundry.jetpack.componentinsight.model.TreeNode;
 import be.ida_mediafoundry.jetpack.componentinsight.repository.ComponentRepository;
+import be.ida_mediafoundry.jetpack.componentinsight.service.ComponentTreeService;
 import com.google.gson.Gson;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
@@ -31,7 +33,7 @@ public class TestServlet extends SlingAllMethodsServlet {
     private static final Logger LOG = LoggerFactory.getLogger(TestServlet.class);
 
     @Reference
-    private ComponentRepository componentRepository;
+    private ComponentTreeService componentTreeService;
 
     @Override
     protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response) {
@@ -46,7 +48,7 @@ public class TestServlet extends SlingAllMethodsServlet {
     }
 
     private void process(SlingHttpServletResponse response) throws IOException {
-        List<JcrComponent> result = componentRepository.getAll();
+        List<TreeNode> result = componentTreeService.getComponentTree();
 
         Gson gson = new Gson();
         response.getWriter().write(gson.toJson(result));

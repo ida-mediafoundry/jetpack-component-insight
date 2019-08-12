@@ -9,6 +9,10 @@ public class TreeNode {
 
     private List<TreeNode> children = new ArrayList<>();
 
+    public TreeNode() {
+        this.component = new JcrComponent();
+    }
+
     public TreeNode(JcrComponent component) {
         this.component = component;
     }
@@ -19,6 +23,10 @@ public class TreeNode {
 
     public JcrComponent getComponent() {
         return component;
+    }
+
+    public void setComponent(JcrComponent component) {
+        this.component = component;
     }
 
     public List<TreeNode> getChildren() {

@@ -15,36 +15,61 @@
         },
         "image-component": {
           "jcr:primaryType": "cq:Component",
-          "sling:resourceType": "jetpack/components/general/image-component"
+          "sling:resourceSuperType": "adobe/components/general/image-component",
+          "sling:resourceType": "jetpack/components/general/image-component",
+          "jcr:title": "Image Component",
+          "componentGroup": "Jetpack - General"
+        },
+        "master-component": {
+          "jcr:primaryType": "cq:Component",
+          "sling:resourceSuperType": "cq/components/general/master-component",
+          "sling:resourceType": "jetpack/components/general/master-component",
+          "jcr:title": "Master Component",
+          "componentGroup": "Jetpack - Hidden"
         }
       },
       "layout": {
         "jcr:primaryType": "nt:folder",
         "section-component": {
           "jcr:primaryType": "cq:Component",
-          "sling:resourceType": "jetpack/components/layout/section-component"
+          "sling:resourceSuperType": "jetpack/components/general/master-component",
+          "sling:resourceType": "jetpack/components/layout/section-component",
+          "jcr:title": "Section Component",
+          "componentGroup": "Jetpack - Layout"
         },
         "column-component": {
           "jcr:primaryType": "cq:Component",
-          "sling:resourceType": "jetpack/components/layout/column-component"
+          "sling:resourceSuperType": "jetpack/components/general/master-component",
+          "sling:resourceType": "jetpack/components/layout/column-component",
+          "jcr:title": "Column Component",
+          "componentGroup": "Jetpack - Layout"
         }
       },
       "catalog": {
         "jcr:primaryType": "nt:folder",
         "product-component": {
           "jcr:primaryType": "cq:Component",
-          "sling:resourceType": "jetpack/components/catalog/product-component"
+          "sling:resourceSuperType": "jetpack/components/general/image-component",
+          "sling:resourceType": "jetpack/components/catalog/product-component",
+          "jcr:title": "Product Component",
+          "componentGroup": "Jetpack - Catalog"
         }
       },
       "checkout": {
         "jcr:primaryType": "nt:folder",
         "basket-component": {
           "jcr:primaryType": "cq:Component",
-          "sling:resourceType": "jetpack/components/checkout/basket-component"
+          "sling:resourceSuperType": "jetpack/components/general/master-component",
+          "sling:resourceType": "jetpack/components/checkout/basket-component",
+          "jcr:title": "Basket Component",
+          "componentGroup": "Jetpack - Checkout"
         },
         "order-component": {
           "jcr:primaryType": "cq:Component",
-          "sling:resourceType": "jetpack/components/checkout/order-component"
+          "sling:resourceSuperType": "jetpack/components/general/master-component",
+          "sling:resourceType": "jetpack/components/checkout/order-component",
+          "jcr:title": "Order Component",
+          "componentGroup": "Jetpack - Checkout"
         }
       }
     }
@@ -67,10 +92,12 @@
         "jcr:primaryType": "nt:folder",
         "section-component": {
           "jcr:primaryType": "cq:Component",
+          "sling:resourceSuperType": "cq/components/general/master-component",
           "sling:resourceType": "adobe/components/layout/section-component"
         },
         "column-component": {
           "jcr:primaryType": "cq:Component",
+          "sling:resourceSuperType": "cq/components/general/master-component",
           "sling:resourceType": "adobe/components/layout/column-component"
         }
       }

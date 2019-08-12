@@ -32,24 +32,23 @@ public class JcrComponentRepositoryTest {
     public void setUp() {
         context.addModelsForPackage("be.ida_mediafoundry.jetpack");
         context.load().json("/components.json", "/apps");
+        context.registerInjectActivateService(componentRepository);
     }
 
     @Test
     public void getAllComponents() {
         // Given app folder with 11 components
-        context.registerInjectActivateService(componentRepository);
 
         // When executing a query to find all components
         List<JcrComponent> components = componentRepository.getAll();
 
         // Expect a list of 11 components
-        assertThat(components).hasSize(11);
+        assertThat(components).hasSize(12);
     }
 
     @Test
     public void getAllComponents_WithoutCredentials() throws LoginException {
         // Given app folder with 11 components and a resourceResolverFactory that will throw a loginException
-        context.registerInjectActivateService(componentRepository);
         ResourceResolverFactory mockResourceResolverFactory = mock(ResourceResolverFactory.class);
         doThrow(new LoginException()).when(mockResourceResolverFactory).getServiceResourceResolver(anyMap());
         ((JcrComponentRepository)componentRepository).resourceResolverFactory = mockResourceResolverFactory;

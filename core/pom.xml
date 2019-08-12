@@ -55,7 +55,7 @@
                         </Sling-Model-Packages>
                         <Export-Package>
                             be.ida_mediafoundry.jetpack.componentinsight.repository,
-                            be.ida_mediafoundry.jetpack.componentinsight.services,
+                            be.ida_mediafoundry.jetpack.componentinsight.service,
                             be.ida_mediafoundry.jetpack.componentinsight.model,
                         </Export-Package>
                         <Service-Component>OSGI-INF/*</Service-Component>
