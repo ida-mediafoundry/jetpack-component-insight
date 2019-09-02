@@ -50,5 +50,27 @@ public class ComponentTreeServiceTest {
         assertThat(componentTree).isNotEmpty();
         assertThat(componentTree).hasSize(3);
 
+        assertTreeNode(componentTree.get(0), "/apps/adobe/components/general/text-component", 1);
+        assertTreeNode(componentTree.get(0).getChildren().get(0), "/apps/jetpack/components/general/text-component", 0);
+
+        assertTreeNode(componentTree.get(1), "/apps/adobe/components/general/image-component", 1);
+        assertTreeNode(componentTree.get(1).getChildren().get(0), "/apps/jetpack/components/general/image-component", 1);
+        assertTreeNode(componentTree.get(1).getChildren().get(0).getChildren().get(0), "/apps/jetpack/components/catalog/product-component", 0);
+
+        assertTreeNode(componentTree.get(2), "cq/components/general/master-component", 3);
+        assertTreeNode(componentTree.get(2).getChildren().get(0), "/apps/jetpack/components/general/master-component", 4);
+        assertTreeNode(componentTree.get(2).getChildren().get(0).getChildren().get(0), "/apps/jetpack/components/layout/section-component", 0);
+        assertTreeNode(componentTree.get(2).getChildren().get(0).getChildren().get(1), "/apps/jetpack/components/layout/column-component", 0);
+        assertTreeNode(componentTree.get(2).getChildren().get(0).getChildren().get(2), "/apps/jetpack/components/checkout/order-component", 0);
+        assertTreeNode(componentTree.get(2).getChildren().get(0).getChildren().get(3), "/apps/jetpack/components/checkout/basket-component", 0);
+        assertTreeNode(componentTree.get(2).getChildren().get(1), "/apps/adobe/components/layout/section-component", 0);
+        assertTreeNode(componentTree.get(2).getChildren().get(2), "/apps/adobe/components/layout/column-component", 0);
+    }
+
+    private void assertTreeNode(TreeNode treeNode0, String expectedPath, int expectedChildren) {
+        assertThat(treeNode0).isNotNull();
+        assertThat(treeNode0.getComponent()).isNotNull();
+        assertThat(treeNode0.getComponent().getPath()).isEqualTo(expectedPath);
+        assertThat(treeNode0.getChildren()).hasSize(expectedChildren);
     }
 }

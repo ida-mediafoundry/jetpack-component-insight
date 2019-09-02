@@ -9,8 +9,9 @@ public class TreeNode {
 
     private List<TreeNode> children = new ArrayList<>();
 
-    public TreeNode() {
+    public TreeNode(String componentPath) {
         this.component = new JcrComponent();
+        this.component.setPath(componentPath);
     }
 
     public TreeNode(JcrComponent component) {

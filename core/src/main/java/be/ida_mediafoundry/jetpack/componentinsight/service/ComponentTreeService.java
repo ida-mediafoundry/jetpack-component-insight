@@ -38,12 +38,13 @@ public class ComponentTreeService {
     }
 
     private void handleComponentIsChild(Map<String, TreeNode> dictionary, List<TreeNode> rootNodes, JcrComponent component, TreeNode componentTreeNode) {
-        if( !dictionary.containsKey(component.getResourceSuperType())) {
-            TreeNode parentTreeNode = new TreeNode();
-            dictionary.put(component.getResourceSuperType(), parentTreeNode);
+        String parentPath = component.getResourceSuperType();
+        if( !dictionary.containsKey(parentPath)) {
+            TreeNode parentTreeNode = new TreeNode(parentPath);
+            dictionary.put(parentPath, parentTreeNode);
             rootNodes.add(parentTreeNode);
         }
-        TreeNode parentTreeNode = dictionary.get(component.getResourceSuperType());
+        TreeNode parentTreeNode = dictionary.get(parentPath);
         parentTreeNode.addChild(componentTreeNode);
         rootNodes.remove(componentTreeNode);
     }
@@ -56,16 +57,20 @@ public class ComponentTreeService {
 
     private TreeNode AddComponentToDictionary(Map<String, TreeNode> dictionary, JcrComponent component) {
         TreeNode componentTreeNode;
-        if (dictionary.containsKey(component.getResourceType()) && dictionary.get(component.getResourceType()) != null && dictionary.get(component.getResourceType()).getComponent() != null && dictionary.get(component.getResourceType()).getComponent().getPath() == null) {
-            //Case 1: resourceType found in lookup and contains TreeNode that doesn't have a component
+        if (dictionaryContainsComponentPlaceholder(dictionary, component)) {
             componentTreeNode = dictionary.get(component.getResourceType());
             componentTreeNode.setComponent(component);
         } else {
-            //Case 2: resourceType not found in lookup
-            //Case 3: resourceType found but contains null
             componentTreeNode = new TreeNode(component);
             dictionary.putIfAbsent(component.getResourceType(), componentTreeNode);
         }
         return componentTreeNode;
+    }
+
+    private boolean dictionaryContainsComponentPlaceholder(Map<String, TreeNode> dictionary, JcrComponent component) {
+        return dictionary.containsKey(component.getResourceType())
+                && dictionary.get(component.getResourceType()) != null
+                && dictionary.get(component.getResourceType()).getComponent() != null
+                && dictionary.get(component.getResourceType()).getComponent().getResource() == null;
     }
 }

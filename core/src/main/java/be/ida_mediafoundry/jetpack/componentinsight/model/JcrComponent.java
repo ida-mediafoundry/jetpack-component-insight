@@ -33,9 +33,14 @@ public class JcrComponent {
     @ValueMapValue(name = "sling:resourceSuperType")
     private String resourceSuperType;
 
+
     @PostConstruct
     public void setup(){
         this.path = resource.getPath();
+    }
+
+    public void setPath(String path) {
+        this.path = path;
     }
 
     public String getPath() {
@@ -62,5 +67,7 @@ public class JcrComponent {
         return resourceSuperType;
     }
 
-
+    public Resource getResource() {
+        return resource;
+    }
 }
