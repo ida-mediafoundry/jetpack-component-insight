@@ -1,0 +1,3 @@
+#base=css
+
+../component-insight-component/styles/jetpack-component-insight.less

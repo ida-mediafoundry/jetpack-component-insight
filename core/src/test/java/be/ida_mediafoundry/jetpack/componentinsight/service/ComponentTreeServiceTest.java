@@ -48,7 +48,7 @@ public class ComponentTreeServiceTest {
         //Then expect a component tree structure
         assertThat(componentTree).isNotNull();
         assertThat(componentTree).isNotEmpty();
-        assertThat(componentTree).hasSize(3);
+        assertThat(componentTree).hasSize(4);
 
         assertTreeNode(componentTree.get(0), "/apps/adobe/components/general/text-component", 1);
         assertTreeNode(componentTree.get(0).getChildren().get(0), "/apps/jetpack/components/general/text-component", 0);
@@ -65,6 +65,8 @@ public class ComponentTreeServiceTest {
         assertTreeNode(componentTree.get(2).getChildren().get(0).getChildren().get(3), "/apps/jetpack/components/checkout/basket-component", 0);
         assertTreeNode(componentTree.get(2).getChildren().get(1), "/apps/adobe/components/layout/section-component", 0);
         assertTreeNode(componentTree.get(2).getChildren().get(2), "/apps/adobe/components/layout/column-component", 0);
+
+        assertTreeNode(componentTree.get(3), "/apps/cq/components/general/test-component", 0);
     }
 
     private void assertTreeNode(TreeNode treeNode0, String expectedPath, int expectedChildren) {

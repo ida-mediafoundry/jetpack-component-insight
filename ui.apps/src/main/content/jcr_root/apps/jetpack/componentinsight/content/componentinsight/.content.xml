@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        jcr:mixinTypes="[sling:VanityPath]"
+        jcr:primaryType="nt:unstructured"
+        jcr:title="Jetpack Component Insight"
+        sling:resourceType="granite/ui/components/shell/collectionpage"
+        currentView="list"
+        modeGroup="jetpack-admin-component-insight"
+        sling:vanityPath="/jetpack/component-insight"
+        pageURITemplate="/libs/cq/i18n/translator.html{+id}"
+        targetCollection=".jetpack-admin-component-insight">
+        <head jcr:primaryType="nt:unstructured">
+            <viewport
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/admin/page/viewport"/>
+            <meta
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/meta"
+                content="chrome=1"
+                name="X-UA-Compatible"/>
+            <winmode
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="cq/gui/components/siteadmin/admin/page/winmode"/>
+            <title
+                jcr:primaryType="nt:unstructured"
+                jcr:title="Jetpack Dictionary Activation Tool"
+                sling:resourceType="cq/gui/components/siteadmin/admin/page/title"/>
+            <favicon
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/page/favicon"/>
+            <clientlibs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/includeclientlibs"
+                categories="[coralui3,granite.ui.coral.foundation,jetpack.admin.component-insight]"/>
+        </head>
+        <views jcr:primaryType="nt:unstructured">
+            <componentInsightView
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="jetpack/componentinsight/components/component-insight-component">
+            </componentInsightView>
+        </views>
+    </jcr:content>
+    <edit/>
+</jcr:root>

@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/ida-mediafoundry/jetpack-component-insight.svg?branch=master)](https://travis-ci.org/ida-mediafoundry/jetpack-component-insight)[![codecov](https://codecov.io/gh/ida-mediafoundry/jetpack-component-insight/branch/master/graph/badge.svg)](https://codecov.io/gh/ida-mediafoundry/jetpack-component-insight)
 
 # Jetpack - Component Insight
-(powered by iDA Mediafoundry)
+(powered by IDA Mediafoundry)
 
 ## Description
 
@@ -10,6 +10,8 @@ Provide the authors and developers a visual interface see the usage, relations a
 # Pre-requisites
 
 # Tool Manaul
+
+Go to /jetpack/component-insight to access the tool
 
 # User configuration
 

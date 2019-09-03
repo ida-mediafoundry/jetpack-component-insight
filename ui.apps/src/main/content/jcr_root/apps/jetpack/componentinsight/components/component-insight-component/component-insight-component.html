@@ -1,0 +1,4 @@
+<sly data-sly-use.componentInsightModel="be.ida_mediafoundry.jetpack.componentinsight.model.ComponentInsightModel">
+
+    <pre id="component-insight-component" data-sly-attribute.data-json="${componentInsightModel.componentTreeJson @ context='unsafe'}">${componentInsightModel.prettyComponentTreeJson @ context='unsafe'}</pre>
+</sly>

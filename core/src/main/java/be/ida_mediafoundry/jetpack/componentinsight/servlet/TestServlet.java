@@ -38,7 +38,6 @@ public class TestServlet extends SlingAllMethodsServlet {
     @Override
     protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response) {
         response.setContentType("application/json");
-
         try {
             process(response);
         } catch (Exception e) {

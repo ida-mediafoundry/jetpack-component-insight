@@ -39,7 +39,7 @@ public class ComponentTreeService {
 
     private void handleComponentIsChild(Map<String, TreeNode> dictionary, List<TreeNode> rootNodes, JcrComponent component, TreeNode componentTreeNode) {
         String parentPath = component.getResourceSuperType();
-        if( !dictionary.containsKey(parentPath)) {
+        if(!dictionary.containsKey(parentPath)) {
             TreeNode parentTreeNode = new TreeNode(parentPath);
             dictionary.put(parentPath, parentTreeNode);
             rootNodes.add(parentTreeNode);

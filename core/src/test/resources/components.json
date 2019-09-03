@@ -1,5 +1,34 @@
 {
   "jcr:primaryType": "sling:Folder",
+  "adobe": {
+    "components": {
+      "jcr:primaryType": "nt:folder",
+      "general": {
+        "jcr:primaryType": "nt:folder",
+        "text-component": {
+          "jcr:primaryType": "cq:Component",
+          "sling:resourceType": "adobe/components/general/text-component"
+        },
+        "image-component": {
+          "jcr:primaryType": "cq:Component",
+          "sling:resourceType": "adobe/components/general/image-component"
+        }
+      },
+      "layout": {
+        "jcr:primaryType": "nt:folder",
+        "section-component": {
+          "jcr:primaryType": "cq:Component",
+          "sling:resourceSuperType": "cq/components/general/master-component",
+          "sling:resourceType": "adobe/components/layout/section-component"
+        },
+        "column-component": {
+          "jcr:primaryType": "cq:Component",
+          "sling:resourceSuperType": "cq/components/general/master-component",
+          "sling:resourceType": "adobe/components/layout/column-component"
+        }
+      }
+    }
+  },
   "jetpack": {
     "jcr:primaryType": "nt:folder",
     "components": {
@@ -74,31 +103,14 @@
       }
     }
   },
-  "adobe": {
+  "cq": {
     "components": {
       "jcr:primaryType": "nt:folder",
       "general": {
         "jcr:primaryType": "nt:folder",
-        "text-component": {
+        "test-component": {
           "jcr:primaryType": "cq:Component",
-          "sling:resourceType": "adobe/components/general/text-component"
-        },
-        "image-component": {
-          "jcr:primaryType": "cq:Component",
-          "sling:resourceType": "adobe/components/general/image-component"
-        }
-      },
-      "layout": {
-        "jcr:primaryType": "nt:folder",
-        "section-component": {
-          "jcr:primaryType": "cq:Component",
-          "sling:resourceSuperType": "cq/components/general/master-component",
-          "sling:resourceType": "adobe/components/layout/section-component"
-        },
-        "column-component": {
-          "jcr:primaryType": "cq:Component",
-          "sling:resourceSuperType": "cq/components/general/master-component",
-          "sling:resourceType": "adobe/components/layout/column-component"
+          "sling:resourceType": "cq/components/general/test-component"
         }
       }
     }

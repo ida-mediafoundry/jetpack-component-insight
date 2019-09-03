@@ -43,7 +43,7 @@ public class JcrComponentRepositoryTest {
         List<JcrComponent> components = componentRepository.getAll();
 
         // Expect a list of 11 components
-        assertThat(components).hasSize(12);
+        assertThat(components).hasSize(13);
     }
 
     @Test
