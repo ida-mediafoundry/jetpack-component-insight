@@ -67,7 +67,4 @@ public class JcrComponent {
         return resourceSuperType;
     }
 
-    public Resource getResource() {
-        return resource;
-    }
 }

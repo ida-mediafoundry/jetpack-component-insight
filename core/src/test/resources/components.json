@@ -102,18 +102,6 @@
         }
       }
     }
-  },
-  "cq": {
-    "components": {
-      "jcr:primaryType": "nt:folder",
-      "general": {
-        "jcr:primaryType": "nt:folder",
-        "test-component": {
-          "jcr:primaryType": "cq:Component",
-          "sling:resourceType": "cq/components/general/test-component"
-        }
-      }
-    }
   }
 }
 

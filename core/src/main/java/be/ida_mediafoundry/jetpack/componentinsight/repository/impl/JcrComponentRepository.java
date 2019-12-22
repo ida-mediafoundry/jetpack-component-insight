@@ -24,7 +24,7 @@ public class JcrComponentRepository implements ComponentRepository {
     private static final Logger LOG = LoggerFactory.getLogger(JcrComponentRepository.class);
     private static final String DEFAULT_USER = "jetpack-component-insight";
     private static final String DEFAULT_SERVICE = "be.ida_mediafoundry.jetpack.component-insight.core";
-    private static final String COMPONENT_QUERY = "SELECT * FROM [cq:Component] AS s WHERE ISDESCENDANTNODE([/apps]) and s.[jcr:primaryType] = 'cq:Component'";
+    private static final String COMPONENT_QUERY = "SELECT * FROM [cq:Component] AS s WHERE (ISDESCENDANTNODE([/apps]) OR ISDESCENDANTNODE([/libs])) and  s.[jcr:primaryType] = 'cq:Component'";
 
     @Reference
     protected ResourceResolverFactory resourceResolverFactory;

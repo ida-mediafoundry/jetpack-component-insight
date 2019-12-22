@@ -32,6 +32,7 @@ public class JcrComponentRepositoryTest {
     public void setUp() {
         context.addModelsForPackage("be.ida_mediafoundry.jetpack");
         context.load().json("/components.json", "/apps");
+        context.load().json("/out-of-the-box-components.json", "/libs");
     }
 
     @Test
@@ -43,7 +44,7 @@ public class JcrComponentRepositoryTest {
         List<JcrComponent> components = componentRepository.getAll();
 
         // Expect a list of 11 components
-        assertThat(components).hasSize(13);
+        assertThat(components).hasSize(14);
     }
 
     @Test

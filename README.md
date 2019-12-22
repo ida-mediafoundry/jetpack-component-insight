@@ -12,6 +12,8 @@ Provide the authors and developers a visual interface see the usage, relations a
 # Tool Manaul
 
 Go to /jetpack/component-insight to access the tool
+OR
+Go to /services/insight/test to get the raw json information
 
 # User configuration
 

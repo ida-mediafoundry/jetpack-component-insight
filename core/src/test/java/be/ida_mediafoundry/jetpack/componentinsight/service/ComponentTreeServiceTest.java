@@ -41,6 +41,7 @@ public class ComponentTreeServiceTest {
     public void getComponentTree() {
         //Given that the repository returns a flat list of components with possible parent references
         context.load().json("/components.json", "/apps");
+        context.load().json("/out-of-the-box-components.json", "/libs");
 
         //When the component tree is calculated
         List<TreeNode> componentTree = componentTreeService.getComponentTree();
@@ -50,23 +51,24 @@ public class ComponentTreeServiceTest {
         assertThat(componentTree).isNotEmpty();
         assertThat(componentTree).hasSize(4);
 
-        assertTreeNode(componentTree.get(0), "/apps/adobe/components/general/text-component", 1);
-        assertTreeNode(componentTree.get(0).getChildren().get(0), "/apps/jetpack/components/general/text-component", 0);
+        assertTreeNode(componentTree.get(0), "/libs/cq/components/general/test-component", 0);
 
-        assertTreeNode(componentTree.get(1), "/apps/adobe/components/general/image-component", 1);
-        assertTreeNode(componentTree.get(1).getChildren().get(0), "/apps/jetpack/components/general/image-component", 1);
-        assertTreeNode(componentTree.get(1).getChildren().get(0).getChildren().get(0), "/apps/jetpack/components/catalog/product-component", 0);
+        assertTreeNode(componentTree.get(1), "/libs/cq/components/general/master-component", 3);
+        assertTreeNode(componentTree.get(1).getChildren().get(0), "/apps/jetpack/components/general/master-component", 4);
+        assertTreeNode(componentTree.get(1).getChildren().get(0).getChildren().get(0), "/apps/jetpack/components/layout/section-component", 0);
+        assertTreeNode(componentTree.get(1).getChildren().get(0).getChildren().get(1), "/apps/jetpack/components/layout/column-component", 0);
+        assertTreeNode(componentTree.get(1).getChildren().get(0).getChildren().get(2), "/apps/jetpack/components/checkout/order-component", 0);
+        assertTreeNode(componentTree.get(1).getChildren().get(0).getChildren().get(3), "/apps/jetpack/components/checkout/basket-component", 0);
+        assertTreeNode(componentTree.get(1).getChildren().get(1), "/apps/adobe/components/layout/section-component", 0);
+        assertTreeNode(componentTree.get(1).getChildren().get(2), "/apps/adobe/components/layout/column-component", 0);
 
-        assertTreeNode(componentTree.get(2), "cq/components/general/master-component", 3);
-        assertTreeNode(componentTree.get(2).getChildren().get(0), "/apps/jetpack/components/general/master-component", 4);
-        assertTreeNode(componentTree.get(2).getChildren().get(0).getChildren().get(0), "/apps/jetpack/components/layout/section-component", 0);
-        assertTreeNode(componentTree.get(2).getChildren().get(0).getChildren().get(1), "/apps/jetpack/components/layout/column-component", 0);
-        assertTreeNode(componentTree.get(2).getChildren().get(0).getChildren().get(2), "/apps/jetpack/components/checkout/order-component", 0);
-        assertTreeNode(componentTree.get(2).getChildren().get(0).getChildren().get(3), "/apps/jetpack/components/checkout/basket-component", 0);
-        assertTreeNode(componentTree.get(2).getChildren().get(1), "/apps/adobe/components/layout/section-component", 0);
-        assertTreeNode(componentTree.get(2).getChildren().get(2), "/apps/adobe/components/layout/column-component", 0);
+        assertTreeNode(componentTree.get(2), "/apps/adobe/components/general/text-component", 1);
+        assertTreeNode(componentTree.get(2).getChildren().get(0), "/apps/jetpack/components/general/text-component", 0);
 
-        assertTreeNode(componentTree.get(3), "/apps/cq/components/general/test-component", 0);
+        assertTreeNode(componentTree.get(3), "/apps/adobe/components/general/image-component", 1);
+        assertTreeNode(componentTree.get(3).getChildren().get(0), "/apps/jetpack/components/general/image-component", 1);
+        assertTreeNode(componentTree.get(3).getChildren().get(0).getChildren().get(0), "/apps/jetpack/components/catalog/product-component", 0);
+
     }
 
     private void assertTreeNode(TreeNode treeNode0, String expectedPath, int expectedChildren) {

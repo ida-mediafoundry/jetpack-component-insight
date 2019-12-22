@@ -39,38 +39,53 @@ public class ComponentTreeService {
 
     private void handleComponentIsChild(Map<String, TreeNode> dictionary, List<TreeNode> rootNodes, JcrComponent component, TreeNode componentTreeNode) {
         String parentPath = component.getResourceSuperType();
-        if(!dictionary.containsKey(parentPath)) {
-            TreeNode parentTreeNode = new TreeNode(parentPath);
+
+        TreeNode parentTreeNode = getMatchingTreeNodeFromDictionary(dictionary, parentPath);
+        if (parentTreeNode == null ) {
+            parentTreeNode = new TreeNode(parentPath);
             dictionary.put(parentPath, parentTreeNode);
             rootNodes.add(parentTreeNode);
         }
-        TreeNode parentTreeNode = dictionary.get(parentPath);
+
         parentTreeNode.addChild(componentTreeNode);
         rootNodes.remove(componentTreeNode);
     }
 
     private void handleComponentIsRoot(List<TreeNode> rootNodes, TreeNode componentTreeNode) {
-        if(!rootNodes.contains(componentTreeNode)){
+        if (!rootNodes.contains(componentTreeNode)) {
             rootNodes.add(componentTreeNode);
         }
     }
 
     private TreeNode AddComponentToDictionary(Map<String, TreeNode> dictionary, JcrComponent component) {
-        TreeNode componentTreeNode;
-        if (dictionaryContainsComponentPlaceholder(dictionary, component)) {
-            componentTreeNode = dictionary.get(component.getResourceType());
+        TreeNode componentTreeNode = getMatchingTreeNodeFromDictionary(dictionary, component.getPath());
+        if (componentTreeNode != null) {
             componentTreeNode.setComponent(component);
         } else {
             componentTreeNode = new TreeNode(component);
-            dictionary.putIfAbsent(component.getResourceType(), componentTreeNode);
+            dictionary.putIfAbsent(component.getPath(), componentTreeNode);
         }
         return componentTreeNode;
     }
 
-    private boolean dictionaryContainsComponentPlaceholder(Map<String, TreeNode> dictionary, JcrComponent component) {
-        return dictionary.containsKey(component.getResourceType())
-                && dictionary.get(component.getResourceType()) != null
-                && dictionary.get(component.getResourceType()).getComponent() != null
-                && dictionary.get(component.getResourceType()).getComponent().getResource() == null;
+    private TreeNode getMatchingTreeNodeFromDictionary(Map<String, TreeNode> dictionary, String parentPath) {
+        if (dictionary.containsKey(parentPath)) {
+            return dictionary.get(parentPath);
+        }
+        String appsParentPath = parentPath.replace("/apps/", "");
+        if (dictionary.containsKey(appsParentPath)) {
+            return dictionary.get(appsParentPath);
+        }
+        String libsParentPath = parentPath.replace("/libs/", "");
+        if (dictionary.containsKey(libsParentPath)){
+            return dictionary.get(libsParentPath);
+        }
+        if (dictionary.containsKey("/apps/" + parentPath)) {
+            return dictionary.get("/apps/" + parentPath);
+        }
+        if (dictionary.containsKey("/libs/" + parentPath)) {
+            return dictionary.get("/libs/" + parentPath);
+        }
+        return null;
     }
 }
