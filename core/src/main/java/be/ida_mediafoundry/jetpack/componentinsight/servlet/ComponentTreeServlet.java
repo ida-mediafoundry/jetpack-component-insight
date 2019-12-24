@@ -1,8 +1,6 @@
 package be.ida_mediafoundry.jetpack.componentinsight.servlet;
 
-import be.ida_mediafoundry.jetpack.componentinsight.model.JcrComponent;
 import be.ida_mediafoundry.jetpack.componentinsight.model.TreeNode;
-import be.ida_mediafoundry.jetpack.componentinsight.repository.ComponentRepository;
 import be.ida_mediafoundry.jetpack.componentinsight.service.ComponentTreeService;
 import com.google.gson.Gson;
 import org.apache.sling.api.SlingHttpServletRequest;
@@ -24,13 +22,13 @@ import java.util.List;
 @Component(
         service = { Servlet.class },
         property = {
-                ServletResolverConstants.SLING_SERVLET_PATHS + "=/services/insight/test",
-                Constants.SERVICE_DESCRIPTION + "=Test insight",
-                Constants.SERVICE_VENDOR + ":String=" + "IDA Mediafoundry",
+                ServletResolverConstants.SLING_SERVLET_PATHS + "=/services/insight/tree",
+                Constants.SERVICE_DESCRIPTION + "=Component Tree servlet",
+                Constants.SERVICE_VENDOR + ":String=" + "IDA",
         })
-public class TestServlet extends SlingAllMethodsServlet {
+public class ComponentTreeServlet extends SlingAllMethodsServlet {
 
-    private static final Logger LOG = LoggerFactory.getLogger(TestServlet.class);
+    private static final Logger LOG = LoggerFactory.getLogger(ComponentTreeServlet.class);
 
     @Reference
     private ComponentTreeService componentTreeService;

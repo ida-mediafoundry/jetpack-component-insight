@@ -10,7 +10,7 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import javax.annotation.PostConstruct;
 
 @Model(adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
-public class JcrComponent {
+public class JcrComponent implements Comparable{
 
     @Self
     private transient Resource resource;
@@ -33,9 +33,8 @@ public class JcrComponent {
     @ValueMapValue(name = "sling:resourceSuperType")
     private String resourceSuperType;
 
-
     @PostConstruct
-    public void setup(){
+    public void setup() {
         this.path = resource.getPath();
     }
 
@@ -63,8 +62,28 @@ public class JcrComponent {
         return resourceType;
     }
 
+    public String getGeneralResourceType() {
+        if (resourceType != null) {
+            return resourceType.replace("/apps/", "").replace("/libs/", "");
+        } else {
+            return path.replace("/apps/", "").replace("/libs/", "");
+        }
+    }
+
     public String getResourceSuperType() {
         return resourceSuperType;
     }
 
+    @Override
+    public int compareTo(Object o) {
+        if(o instanceof JcrComponent){
+            return path.compareTo(((JcrComponent)o).path);
+        }
+        return 0;
+    }
+
+    @Override
+    public String toString() {
+        return path;
+    }
 }

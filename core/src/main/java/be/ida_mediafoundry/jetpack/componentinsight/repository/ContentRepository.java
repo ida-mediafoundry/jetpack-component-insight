@@ -4,10 +4,11 @@ import be.ida_mediafoundry.jetpack.componentinsight.model.JcrComponent;
 
 import java.util.List;
 
-public interface ComponentRepository {
+public interface ContentRepository {
 
-    List<JcrComponent> getAll();
-    List<JcrComponent> getAllCustom();
+    List<String> getAllContentRoots();
+
+    List<String> getComponentUsages(String contentPath, JcrComponent component );
 
 }
 
