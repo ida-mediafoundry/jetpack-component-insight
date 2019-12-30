@@ -15,10 +15,10 @@
         </thead>
 
         <tbody is="coral-table-body" class="coral-Table-body coral-Table-divider--row" divider="row"
-               role="rowgroup">
-        <tr is="coral-table-row" class="coral-Table-row" role="row" aria-selected="false"
-            data-sly-test.componentmap=${componentInsightModel.componentUsagePerBrand}
-            data-sly-list.component="${componentmap.keySet.iterator}">
+               role="rowgroup"
+               data-sly-test.componentmap=${componentInsightModel.componentUsagePerBrand}
+               data-sly-list.component="${componentmap.keySet.iterator}">
+        <tr is="coral-table-row" class="coral-Table-row" role="row" aria-selected="false">
             <td is="coral-table-cell" class="coral-Table-cell" value="" role="gridcell" aria-selected="false"
                 alignment="null">${component}
             </td>
@@ -30,88 +30,6 @@
             </sly>
         </tr>
         </tbody>
-
     </table>
-
-
-<!--    <table is="coral-table"-->
-<!--           class="cq-siteadmin-admin-childpages cq-components-list foundation-layout-util-maximized-alt foundation-collection foundation-layout-table coral-Table-wrapper coral-Table-wrapper&#45;&#45;default coral-Table-wrapper&#45;&#45;sticky"-->
-<!--           data-foundation-collection-src="/mnt/overlay/wcm/core/content/sites/components/jcr:content/views/list{.offset,limit}.html{+id}{?group,path,fulltext}"-->
-<!--           data-foundation-selections-mode="multiple" data-foundation-mode-group="cq-siteadmin-admin-childpages"-->
-<!--           data-foundation-layout-table-hasmore="true"-->
-<!--           data-foundation-layout="{&quot;name&quot;:&quot;foundation-layout-table&quot;,&quot;limit&quot;:40,&quot;sortMode&quot;:null,&quot;rowReorderAction&quot;:null,&quot;layoutId&quot;:&quot;list&quot;,&quot;trackingFeature&quot;:null,&quot;trackingElement&quot;:null}"-->
-<!--           multiple="" role="presentation" style="position: relative;">-->
-
-<!--        <div handle="container" class=" coral-Table-wrapper-container" role="presentation" coral-table-scroll=""-->
-<!--             style="margin-top: 37px; height: calc(100% - 39px);">-->
-<!--            <table class=" coral-Table" role="grid" aria-multiselectable="true">-->
-<!--                <thead is="coral-table-head" sticky="" class="coral-Table-head coral-Table-divider&#45;&#45;row" divider="row"-->
-<!--                       role="rowgroup">-->
-<!--                <tr is="coral-table-row" class="coral-Table-row" role="row" aria-selected="false">-->
-<!--                    <th is="coral-table-headercell" class="coral-Table-headerCell" fixedwidth=""-->
-<!--                        sortabledirection="default" aria-sort="none" alignment="center" role="columnheader" scope="col">-->
-<!--                        <coral-table-headercell-content style="width: 48px; top: 0px;">-->
-<!--                            <coral-checkbox coral-table-select="" trackingelement="table-select" class="coral3-Checkbox"-->
-<!--                                            aria-required="false" aria-invalid="false" aria-readonly="false" hidden="">-->
-<!--                                <input type="checkbox" handle="input" class=" coral3-Checkbox-input" id="coral-id-6">-->
-<!--                                <span class=" coral3-Checkbox-checkmark" handle="checkbox"></span>-->
-<!--                                <label class=" coral3-Checkbox-description" handle="labelWrapper" for="coral-id-6"-->
-<!--                                       hidden="">-->
-<!--                                    <coral-checkbox-label></coral-checkbox-label>-->
-<!--                                </label></coral-checkbox>-->
-<!--                        </coral-table-headercell-content>-->
-<!--                    </th>-->
-<!--                    <th is="coral-table-headercell" class="coral-Table-headerCell" sortable=""-->
-<!--                        sortabledirection="default" aria-sort="none" alignment="null" role="columnheader" scope="col"-->
-<!--                        style="min-width: 26.5px;">-->
-<!--                        <coral-table-headercell-content tabindex="0"-->
-<!--                                                        style="width: 180px; padding-top: 10.5px; top: 0px;">Title-->
-<!--                        </coral-table-headercell-content>-->
-<!--                    </th>-->
-<!--                    <th is="coral-table-headercell" class="coral-Table-headerCell" sortable=""-->
-<!--                        sortabledirection="default" aria-sort="none" alignment="null" role="columnheader" scope="col"-->
-<!--                        style="min-width: 39px;">-->
-<!--                        <coral-table-headercell-content tabindex="0"-->
-<!--                                                        style="width: 155px; padding-top: 10.5px; top: 0px;">Group-->
-<!--                        </coral-table-headercell-content>-->
-<!--                    </th>-->
-<!--                    <th is="coral-table-headercell" class="coral-Table-headerCell" sortable=""-->
-<!--                        sortabledirection="default" aria-sort="none" alignment="null" role="columnheader" scope="col"-->
-<!--                        style="min-width: 92.25px;">-->
-<!--                        <coral-table-headercell-content tabindex="0"-->
-<!--                                                        style="width: 390px; padding-top: 10.5px; top: 0px;">Resource-->
-<!--                            Type-->
-<!--                        </coral-table-headercell-content>-->
-<!--                    </th>-->
-<!--                </tr>-->
-<!--                </thead>-->
-<!--                <tbody is="coral-table-body" class="coral-Table-body coral-Table-divider&#45;&#45;row" divider="row"-->
-<!--                       role="rowgroup">-->
-<!--                <tr class="foundation-collection-item foundation-collection-navigator coral-Table-row"-->
-<!--                    data-foundation-collection-item-id="/libs/cq/gui/components/cloudservices/admin/3rdparty"-->
-<!--                    data-granite-collection-item-id="/libs/cq/gui/components/cloudservices/admin/3rdparty"-->
-<!--                    data-datasource-index="0"-->
-<!--                    data-foundation-collection-navigator-href="/mnt/overlay/wcm/core/content/sites/components/details.html/libs/cq/gui/components/cloudservices/admin/3rdparty"-->
-<!--                    is="coral-table-row" role="row" aria-selected="false">-->
-<!--                    <td is="coral-table-cell" class="coral-Table-cell" value="" role="gridcell" aria-selected="false"-->
-<!--                        alignment="center"><a class="foundation-layout-table-cellwrapper" target="undefined"-->
-<!--                                              href="/mnt/overlay/wcm/core/content/sites/components/details.html/libs/cq/gui/components/cloudservices/admin/3rdparty">-->
-<!--                        <coral-tag size="M" color="grey" class="coral3-Tag coral3-Tag&#45;&#45;medium coral3-Tag&#45;&#45;grey"-->
-<!--                                   trackingelement="">-->
-<!--                            <coral-tag-label>3r</coral-tag-label>-->
-<!--                        </coral-tag>-->
-<!--                    </a></td>-->
-
-<!--                    <td class="foundation-collection-item-title coral-Table-cell" is="coral-table-cell" value="3rdparty"-->
-<!--                        role="gridcell" aria-selected="false" alignment="null">3rdparty-->
-<!--                    </td>-->
-
-<!--                    <td is="coral-table-cell" class="coral-Table-cell" value="" role="gridcell" aria-selected="false"-->
-<!--                        alignment="null"><span>.hidden</span></td>-->
-<!--                    <td is="coral-table-cell" class="coral-Table-cell" value="" role="gridcell" aria-selected="false"-->
-<!--                        alignment="null"><span>/libs/cq/gui/components/cloudservices/admin/3rdparty</span></td>-->
-<!--                    <td is="coral-table-cell" alignment="right" class="coral-Table-cell" value="" role="gridcell"-->
-<!--                        aria-selected="false"></td>-->
-<!--                </tr>-->
 
 </sly>
