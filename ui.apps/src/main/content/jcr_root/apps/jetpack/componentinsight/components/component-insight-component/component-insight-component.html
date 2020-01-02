@@ -1,0 +1,35 @@
+<sly data-sly-use.componentInsightModel="be.ida_mediafoundry.jetpack.componentinsight.model.ComponentInsightModel">
+
+    <!--    <pre id="component-insight-component"-->
+    <!--         data-sly-attribute.data-json="${componentInsightModel.componentTreeJson @ context='unsafe'}">${componentInsightModel.prettyComponentTreeJson @ context='unsafe'}</pre>-->
+
+    <table class=" coral-Table" role="grid" aria-multiselectable="true">
+        <thead class="coral-Table-head coral-Table-divider--row">
+        <tr class="coral-Table-row" role="row" aria-selected="false">
+            <th class="coral-Table-headerCell">Component</th>
+
+            <sly data-sly-list.contentRoot="${componentInsightModel.allContentRoots}">
+                <th class="coral-Table-headerCell">${contentRoot}</th>
+            </sly>
+        </tr>
+        </thead>
+
+        <tbody is="coral-table-body" class="coral-Table-body coral-Table-divider--row" divider="row"
+               role="rowgroup"
+               data-sly-test.componentmap=${componentInsightModel.componentUsagePerBrand}
+               data-sly-list.component="${componentmap.keySet.iterator}">
+        <tr is="coral-table-row" class="coral-Table-row" role="row" aria-selected="false">
+            <td is="coral-table-cell" class="coral-Table-cell" value="" role="gridcell" aria-selected="false"
+                alignment="null">${component}
+            </td>
+
+            <sly data-sly-list.contentRoot="${componentmap[component].keySet.iterator}">
+                <td is="coral-table-cell" class="coral-Table-cell" value="" role="gridcell" aria-selected="false"
+                    alignment="null">${componentmap[component][contentRoot]}
+                </td>
+            </sly>
+        </tr>
+        </tbody>
+    </table>
+
+</sly>

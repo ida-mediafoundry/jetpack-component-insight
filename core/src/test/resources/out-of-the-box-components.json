@@ -1,0 +1,21 @@
+{
+  "jcr:primaryType": "sling:Folder",
+  "cq": {
+    "components": {
+      "jcr:primaryType": "nt:folder",
+      "general": {
+        "jcr:primaryType": "nt:folder",
+        "master-component": {
+          "jcr:primaryType": "cq:Component",
+          "sling:resourceType": "cq/components/general/master-component"
+        },
+        "test-component": {
+          "jcr:primaryType": "cq:Component",
+          "sling:resourceType": "cq/components/general/test-component"
+        }
+      }
+    }
+  }
+}
+
+

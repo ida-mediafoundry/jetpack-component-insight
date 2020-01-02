@@ -1,0 +1,3 @@
+#base=js
+
+../component-insight-component/scripts/jetpack-component-insight.js

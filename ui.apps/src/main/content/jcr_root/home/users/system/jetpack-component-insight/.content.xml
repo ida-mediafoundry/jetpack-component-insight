@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:rep="internal"
+          jcr:primaryType="rep:SystemUser"
+          jcr:uuid="5720d575-bffc-3461-b9e4-ed76de177a69"
+          rep:authorizableId="jetpack-component-insight"
+          rep:principalName="jetpack-component-insight"/>

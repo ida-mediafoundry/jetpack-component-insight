@@ -1,29 +1,32 @@
 [![Build Status](https://travis-ci.org/ida-mediafoundry/jetpack-component-insight.svg?branch=master)](https://travis-ci.org/ida-mediafoundry/jetpack-component-insight) [![codecov](https://codecov.io/gh/ida-mediafoundry/jetpack-component-insight/branch/master/graph/badge.svg)](https://codecov.io/gh/ida-mediafoundry/jetpack-component-insight)
 
-# Jetpack - Component Insight
-(powered by iDA Mediafoundry)
+## Jetpack - Component Insight tool powered by IDA
 
-## Description
+### Description
 
-Provide the authors and developers a visual interface see the usage, relations and or inhertiance structure of the deployed components on their AEM instance.
+Provide the authors and developers a visual interface see the usage, relations and inheritance structure of the deployed components on their AEM instance.
 
-# Pre-requisites
+### Pre-requisites
 
-# Tool Manaul
+### Tool Manaul
 
-# User configuration
+Go to /jetpack/component-insight to access the tool
 
-# Remote API
+### User configuration
 
+### Remote API
 
-## Modules
+http://localhost:4502/services/insight/tree
+http://localhost:4502/services/insight/insight  
+
+### Modules
 
 The main parts of the template are:
 
 * core: Java bundle containing all core functionality like OSGi services, Sling Models and WCMCommand.
 * ui.apps: contains the /apps part containing the html, js, css and .content.xml files.
 
-## How to build
+### How to build
 
 To build all the modules run in the project root directory the following command with Maven 3:
 
@@ -45,7 +48,7 @@ Or to deploy only the bundle to the author, run
 
     mvn clean install -PautoInstallBundle
 
-## Testing
+### Testing
 
 There are three levels of testing contained in the project:
 
